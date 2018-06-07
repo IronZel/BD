@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Хост: 127.0.0.1
--- Время создания: Июн 06 2018 г., 12:07
+-- Время создания: Июн 07 2018 г., 11:48
 -- Версия сервера: 5.5.25
 -- Версия PHP: 5.3.13
 
@@ -67,6 +67,18 @@ CREATE TABLE IF NOT EXISTS `documents` (
 CREATE TABLE IF NOT EXISTS `users` (
   `id` int(11) NOT NULL,
   `Name` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `пробная_таблица_для_smartgit`
+--
+
+CREATE TABLE IF NOT EXISTS `пробная_таблица_для_smartgit` (
+  `id` int(4) NOT NULL,
+  `name` varchar(50) NOT NULL,
+  `Date_` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
