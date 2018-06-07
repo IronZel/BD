@@ -1,1 +1,0 @@
-write.line ("Hi, it's a Sano")
