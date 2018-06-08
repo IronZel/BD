@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Июн 06 2018 г., 16:47
+-- Время создания: Июн 08 2018 г., 11:32
 -- Версия сервера: 5.6.38
 -- Версия PHP: 5.5.38
 
@@ -19,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- База данных: `Administration`
+-- База данных: `main1`
 --
 
 -- --------------------------------------------------------
@@ -29,10 +29,24 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `documents` (
-  `docID` int(11) NOT NULL,
+  `id` int(11) NOT NULL,
+  `number` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL,
   `date_accept` date NOT NULL,
   `date_entry` date DEFAULT NULL,
-  `headID` int(11) NOT NULL
+  `head_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `documents_group`
+--
+
+CREATE TABLE `documents_group` (
+  `id` int(11) NOT NULL,
+  `doc_id` int(11) NOT NULL,
+  `group_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -42,10 +56,21 @@ CREATE TABLE `documents` (
 --
 
 CREATE TABLE `document_change` (
-  `actID` int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  `act_id` int(11) NOT NULL,
   `doc_changeable` int(11) NOT NULL,
   `doc_changer` int(11) NOT NULL,
   `act` varchar(15) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `group`
+--
+
+CREATE TABLE `group` (
+  `id` int(11) NOT NULL,
+  `name` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -55,8 +80,10 @@ CREATE TABLE `document_change` (
 --
 
 CREATE TABLE `heads` (
-  `headID` int(11) NOT NULL,
-  `name_head` varchar(50) NOT NULL
+  `id` int(11) NOT NULL,
+  `name` varchar(20) NOT NULL,
+  `surname` varchar(20) NOT NULL,
+  `patronymic` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -67,31 +94,56 @@ CREATE TABLE `heads` (
 -- Индексы таблицы `documents`
 --
 ALTER TABLE `documents`
-  ADD PRIMARY KEY (`docID`),
-  ADD FOREIGN KEY `headID` (`headID`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `headID` (`head_id`);
+
+--
+-- Индексы таблицы `documents_group`
+--
+ALTER TABLE `documents_group`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Индексы таблицы `document_change`
 --
 ALTER TABLE `document_change`
-  ADD FOREIGN KEY `doc_changer` (`doc_changer`),
-  ADD FOREIGN KEY `doc_changeable` (`doc_changeable`);
+  ADD PRIMARY KEY (`act_id`),
+  ADD KEY `doc_changeable` (`doc_changeable`),
+  ADD KEY `doc_changer` (`doc_changer`);
 
 --
 -- Индексы таблицы `heads`
 --
 ALTER TABLE `heads`
-  ADD PRIMARY KEY (`headID`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- AUTO_INCREMENT для сохранённых таблиц
 --
 
 --
+-- AUTO_INCREMENT для таблицы `documents`
+--
+ALTER TABLE `documents`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT для таблицы `documents_group`
+--
+ALTER TABLE `documents_group`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT для таблицы `document_change`
+--
+ALTER TABLE `document_change`
+  MODIFY `act_id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT для таблицы `heads`
 --
 ALTER TABLE `heads`
-  MODIFY `headID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
