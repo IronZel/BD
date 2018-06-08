@@ -42,6 +42,7 @@ CREATE TABLE `documents` (
 --
 
 CREATE TABLE `document_change` (
+  `actID` int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
   `doc_changeable` int(11) NOT NULL,
   `doc_changer` int(11) NOT NULL,
   `act` varchar(15) NOT NULL
