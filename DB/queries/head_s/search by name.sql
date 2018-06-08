@@ -1,0 +1,1 @@
+SELECT * FROM `heads` WHERE `surname` LIKE '%хал%' ORDER BY `surname` ASC
