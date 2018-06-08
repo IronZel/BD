@@ -30,11 +30,11 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `documents` (
   `id` int(11) NOT NULL,
+  `number` int(11) NOT NULL,
   `name` varchar(255) NOT NULL,
   `date_accept` date NOT NULL,
   `date_entry` date DEFAULT NULL,
-  `head_id` int(11) NOT NULL,
-  `doc_id` int(11) NOT NULL
+  `head_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
