@@ -2,4 +2,4 @@
 
 $update = mysql_query
 ("update table documents
- set  date_accept = '$date_accept', date_entry = '$date_entry'");
+ set  date_accept = '$date_accept', date_entry = '$date_entry', id_head = '$id_head'");
