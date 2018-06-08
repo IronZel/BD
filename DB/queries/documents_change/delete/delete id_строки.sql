@@ -2,4 +2,4 @@
 
 $DELETE 
 FROM `document_change` 
-WHERE `doc_changer`=`doc_changer`;
+WHERE `id_строки`=`id_строки`;
