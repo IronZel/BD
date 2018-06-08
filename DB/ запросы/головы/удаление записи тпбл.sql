@@ -1,0 +1,1 @@
+ALTER TABLE `heads` DROP `pasport`;
