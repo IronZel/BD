@@ -2,4 +2,4 @@
 
 $DELETE 
 FROM `document_change` 
-WHERE `id`=`id`;
+WHERE `act_id`=`act_id`;
